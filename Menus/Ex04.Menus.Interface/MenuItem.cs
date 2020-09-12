@@ -78,6 +78,23 @@ namespace Ex04.Menus.Interface
             }
         }
 
+        public IBackOptionListener BackeWasClicked
+        {
+            set
+            {
+                m_BackeWasClicked = value;
+            }
+        }
+
+        public IMenuItemClickedListener OptionWasClicked
+        {
+            set
+            {
+                m_OptionWasClicked = value;
+            }
+        }
+
+
         public bool IsLeaf
         {
             get
@@ -131,5 +148,11 @@ namespace Ex04.Menus.Interface
                 m_OptionWasClicked.MenuItemClicked(this);
             }
         }
+
+        public void AddMethodActivatorListener(IMethodActivator i_MethosActivator)
+        {
+            m_MethodAction = i_MethosActivator;
+        }
+
     }
 }
