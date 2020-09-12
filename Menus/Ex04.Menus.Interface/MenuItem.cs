@@ -11,14 +11,14 @@ namespace Ex04.Menus.Interface
         void CallMethod();
     }
 
-    public interface IMenuItemListener
+    public interface IMenuItemClickedListener
     {
-        void MenuItemClicked();
+        void MenuItemClicked(MenuItem i_MenuItemThatWasClicked);
     }
 
     public interface IBackOptionListener
     {
-        void BackClicked();
+        void BackClicked(MenuItem i_BackWasClicked);
     }
 
     public class MenuItem 
@@ -27,6 +27,8 @@ namespace Ex04.Menus.Interface
         private List<MenuItem> m_SubMenu;
         private MenuItem m_PreviousItem;
         private IMethodActivator m_MethodAction;
+        private IBackOptionListener m_BackeWasClicked;
+        private IMenuItemClickedListener m_OptionWasClicked;
         private bool m_IsLeaf;
 
         // Constructor
@@ -97,5 +99,16 @@ namespace Ex04.Menus.Interface
             m_MethodAction.CallMethod();
         }
 
+        private void ChoseOptionToClick(int i_SubMenuChosice)
+        {
+            if(i_SubMenuChosice == 0)
+            {
+                m_BackeWasClicked.BackClicked(this);
+            }
+            else
+            {
+                m_OptionWasClicked.MenuItemClicked(this);
+            }
+        }
     }
 }
