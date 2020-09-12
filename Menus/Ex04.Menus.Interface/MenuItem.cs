@@ -57,6 +57,27 @@ namespace Ex04.Menus.Interface
             }
         }
 
+        public MenuItem PreviousItem
+        {
+            get
+            {
+                return m_PreviousItem;
+            }
+        }
+
+        public IMethodActivator MethodActivator
+        {
+            get
+            {
+                return m_MethodAction;
+            }
+
+            set
+            {
+                m_MethodAction = value;
+            }
+        }
+
         public bool IsLeaf
         {
             get
